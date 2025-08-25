@@ -5,7 +5,8 @@ const app: Application = express();
 
 app.use(express.json());
 
-const noteSchema = new Schema({
+const noteSchema = new Schema(
+  {
   title: { type: String, required: true, trim: true },
   content: { type: String, default: "" },
   category: {
@@ -21,7 +22,12 @@ const noteSchema = new Schema({
     label: { type: String, required: true },
     color: { type: String, default: "gray" },
   },
-});
+},
+{
+  versionKey: false,
+  timestamps: true,
+}
+);
 
 const Note = mongoose.model("Note", noteSchema);
 
