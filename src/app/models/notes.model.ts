@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
+import { INotes } from "../interfaces/notes.interface";
 
-const noteSchema = new Schema(
+const noteSchema = new Schema<INotes>(
   {
     title: { type: String, required: true, trim: true },
     content: { type: String, default: "" },
@@ -24,4 +25,4 @@ const noteSchema = new Schema(
   }
 );
 
-export const Note = mongoose.model("Note", noteSchema);
+export const Note = mongoose.model<INotes>("Note", noteSchema);
